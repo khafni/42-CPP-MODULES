@@ -8,6 +8,7 @@ class phonebook
 		int number_of_contacts;
 		phonebook();
 		void add_contact(void);
+		void search(void);
 
 };
 

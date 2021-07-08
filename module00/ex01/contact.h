@@ -15,6 +15,5 @@ public:
 	std::string underwear_color;
 	std::string darkest_secret;
 
-	contact(void);
-	
+	contact(void);	
 };

@@ -7,13 +7,13 @@ int main()
  	while (1)
 	{
 		std::cout << "enter command: ";
-		std::cin >> prompt;
+		std::getline(std::cin, prompt);	
 		if (!prompt.compare("EXIT"))
 			return (0);
 		else if (!prompt.compare("ADD"))
 			phbook.add_contact();
-		else if (!prompt.compare("SEARCH"))
-			phbook.
-	}
+	else if (!prompt.compare("SEARCH"))
+			phbook.search();
+	}	
 	return (0);
 }
