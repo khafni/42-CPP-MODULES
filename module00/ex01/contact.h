@@ -14,6 +14,7 @@ public:
 	std::string favorite_meal;
 	std::string underwear_color;
 	std::string darkest_secret;
-
-	contact(void);	
+	void print_contact(void);
+	contact(void);
+	
 };
