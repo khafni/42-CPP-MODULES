@@ -1,109 +1,85 @@
-#include "phonebook.h"
-#include <iomanip>
+#include "phonebook.hpp"
 
-void phonebook::add_contact(void)
+phonebook::phonebook()
 {
-	if (this->number_of_contacts >= 8)
-	{
-		std::cout << "phonebook number of contacts reached its maximum capacity!" << std::endl;
-		return;
-	}
-	std::cout << "enter first_name : ";
-	std::getline(std::cin, this->contacts_array[this->number_of_contacts].first_name);
-	//std::cin >> this->contacts_array[this->number_of_contacts].first_name;
-	//std::getline(std::cin, this->contacts_array[this->number_of_contacts].first_name);
-	std::cout << "enter last_name : ";
-	std::getline(std::cin, this->contacts_array[this->number_of_contacts].last_name);
-	//std::cin >> this->contacts_array[this->number_of_contacts].last_name;
-	std::cout << "enter nickname : ";
-	std::getline(std::cin, this->contacts_array[this->number_of_contacts].nickname);
-	//std::cin >> this->contacts_array[this->number_of_contacts].nickname;
-	std::cout << "enter login : ";
-	std::getline(std::cin, this->contacts_array[this->number_of_contacts].login);
-	//std::cin >> this->contacts_array[this->number_of_contacts].login;
-	std::cout << "enter postal address : ";
-	std::getline(std::cin, this->contacts_array[this->number_of_contacts].postal_address);
-	// std::cin >> this->contacts_array[this->number_of_contacts].postal_address;
-	std::cout << "enter email address : ";
-	std::getline(std::cin, this->contacts_array[this->number_of_contacts].email_address);
-	std::cout << "enter phone number : ";
-	std::cin >> this->contacts_array[this->number_of_contacts].phone_number;
-	while (std::cin.fail())
-	{
-		std::cout << "Please enter an integer";
-		std::cin.clear();
-		std::cout << std::endl;
-		std::cin >> this->contacts_array[this->number_of_contacts].phone_number;
-	}
-	std::cout << "enter birthday date in the format month/day/year: ";
-	std::cin.ignore();
-	std::getline(std::cin, this->contacts_array[this->number_of_contacts].birthday_date);
-	std::cout << "enter favorite meal : ";
-	std::getline(std::cin, this->contacts_array[this->number_of_contacts].favorite_meal);
-
-	std::cout << "enter underwear color : ";
-	std::getline(std::cin, this->contacts_array[this->number_of_contacts].underwear_color);
-
-	std::cout << "enter darkest secret : ";
-	std::getline(std::cin, this->contacts_array[this->number_of_contacts].darkest_secret);
-	this->number_of_contacts++;
+    this->contacts_size = 0;
 }
 
-std::string str_trunc(std::string str)
+phonebook::contact::contact(std::string first_name, std::string last_name, std::string nickname, int phone_number, std::string darkest_secret)
 {
-	std::string tmp_str;
-
-	if (str.length() > 10)
-	{
-		tmp_str = str.substr(0, 9);
-		tmp_str.append(".");
-		return (tmp_str);
-	}
-	return str;
+    this->first_name = first_name;
+    this->last_name = last_name;
+    this->nickname = nickname;
+    this->phone_number = phone_number;
+    this->darkest_secret = darkest_secret;
 }
-contact *phonebook::get_contact(int contact_index)
+
+void phonebook::contact::contact_set(std::string first_name, std::string last_name, std::string nickname, int phone_number, std::string darkest_secret)
 {
-	if (contact_index > this->number_of_contacts || contact_index < 0)
-		return (nullptr);
-	return &(this->contacts_array[contact_index]);
+    this->first_name = first_name;
+    this->last_name = last_name;
+    this->nickname = nickname;
+    this->phone_number = phone_number;
+    this->darkest_secret = darkest_secret;
+}
+
+void phonebook::add(void)
+{
+    phonebook::contact *c;
+
+
+    this->contacts_size++;
+    if (this->contacts_size > 8)
+    {
+        c = &this->contacts[7];
+        this->contacts_size = 7;
+    }
+    else
+        c = &this->contacts[this->contacts_size - 1];
+    std::cout << "insert first name: ";
+    std::cin >> c->first_name;
+    std::cout << std::endl;
+    std::cout << "insert last name: ";
+    std::cin >> c->last_name;
+    std::cout << std::endl;
+    std::cout << "insert nickname: ";
+    std::cin >> c->nickname;
+    std::cout << std::endl;
+    std::cout << "insert phone number: ";
+    std::cin >> c->phone_number;
+    std::cout << std::endl;
+    std::cout << "insert darkest secret: ";
+    std::cin >> c->darkest_secret;
+    std::cout << std::endl;
 }
 
 void phonebook::search(void)
 {
-	int i;
-	contact c;
-	std::string tmp_str;
-	contact *r_c;
-
-	i = 0;
-	std::cout << '|' << std::setw(10) << std::left << "index" << "|";
-	std::cout << std::setw(10) << str_trunc("first name") << "|";
-	std::cout << std::setw(10) << str_trunc("last name") << "|";
-	std::cout << std::setw(10) << str_trunc("nickname") << "|" << std::endl;
-	while (i < this->number_of_contacts)
-	{
-		c = this->contacts_array[i];
-
-		std::cout << '|' << std::setw(10) << std::left << i << "|";
-		std::cout << std::setw(10) << str_trunc(c.first_name) << "|";
-		std::cout << std::setw(10) << str_trunc(c.last_name) << "|";
-		std::cout << std::setw(10) << str_trunc(c.nickname) << "|" << std::endl;
-		i++;
-	}
-	std::cout << "enter the index of the desired entry: ";
-	std::cin >> i;
-	std::cin.clear();
-	std::cin.ignore(10000, '\n');
-	r_c = this->get_contact(i);
-	if (!r_c)
-	{
-		std::cerr << "wrong index" << std::endl;
-		exit(1);
-	}
-	r_c->print_contact();
+    phonebook::contact *c;
+    unsigned size;
+   // exit(4);
+   
+    c = &this->contacts[this->contacts_size - 1];
+    std::cout << "|" << std::setw(10) << "index" << std::left << '|' << std::endl;
+    if (this->contacts_size == 0)
+        return ;
+    std::cout << c->first_name << " " << c->last_name << " " << c->nickname << " " << c->phone_number << " " << c->darkest_secret << std::endl;
 }
 
-phonebook::phonebook()
+int main(void)
 {
-	this->number_of_contacts = 0;
+    std::string cmd;
+    phonebook ph;
+   // std::cout << ph.contacts[6].first_name << std::endl;
+    while (1)
+    {
+        std::cin >> cmd;
+        if (!std::string("EXIT").compare(cmd))
+            exit(0);
+        else if (!std::string("ADD").compare(cmd))
+            ph.add();
+       else if (!std::string("SEARCH").compare(cmd))
+            ph.search();
+    }
+    return (0);
 }
