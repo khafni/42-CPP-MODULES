@@ -60,7 +60,11 @@ void phonebook::search(void)
    // exit(4);
    
     c = &this->contacts[this->contacts_size - 1];
-    std::cout << "|" << std::setw(10) << "index" << std::left << '|' << std::endl;
+    std::cout << "|" << std::setw(10) << std::left << "index" << "|";
+	std::cout << std::setw(10) <<  "first name" << "|";
+	std::cout << std::setw(10) <<  "last name" << "|";
+	std::cout << std::setw(10) <<  "phone number" << "|";
+	std::cout << std::setw(10) <<  "darkest secret" << "|" << std::endl;
     if (this->contacts_size == 0)
         return ;
     std::cout << c->first_name << " " << c->last_name << " " << c->nickname << " " << c->phone_number << " " << c->darkest_secret << std::endl;
