@@ -1,4 +1,6 @@
 #include "phonebook.hpp"
+#include <iostream>
+#include <string>
 
 phonebook::phonebook()
 {
@@ -53,37 +55,62 @@ void phonebook::add(void)
     std::cout << std::endl;
 }
 
+std::string str_truncate(std::string str)
+{
+    std::string r_s = str.substr(0, 10);
+    if (str.length() > 10)
+        r_s[9] = '.';
+    return (r_s);
+}
+
 void phonebook::search(void)
 {
     phonebook::contact *c;
-    unsigned size;
-   // exit(4);
+    unsigned index;
    
     c = &this->contacts[this->contacts_size - 1];
     std::cout << "|" << std::setw(10) << std::left << "index" << "|";
 	std::cout << std::setw(10) <<  "first name" << "|";
 	std::cout << std::setw(10) <<  "last name" << "|";
-	std::cout << std::setw(10) <<  "phone number" << "|";
-	std::cout << std::setw(10) <<  "darkest secret" << "|" << std::endl;
+    std::cout << std::setw(10) <<  "nickname" << "|";
+	std::cout << std::setw(10) <<  str_truncate("phone number") << "|";
+	std::cout << std::setw(10) <<  str_truncate("darkest secret") << "|" << std::endl;
     if (this->contacts_size == 0)
         return ;
-    std::cout << c->first_name << " " << c->last_name << " " << c->nickname << " " << c->phone_number << " " << c->darkest_secret << std::endl;
+    for (unsigned i = 0; i < this->contacts_size; i++)
+    {
+        c = &this->contacts[i];
+        std::cout << "|" << std::setw(10) << std::left << i << "|";
+        std::cout << std::setw(10) <<  str_truncate(c->first_name) << "|";
+	    std::cout << std::setw(10) <<  str_truncate(c->last_name) << "|";
+	    std::cout << std::setw(10) <<  str_truncate(c->nickname) << "|";
+	    std::cout << std::setw(10) <<  str_truncate(c->phone_number) << "|";
+	    std::cout << std::setw(10) <<  str_truncate(c->darkest_secret) << "|" << std::endl;
+    }
+    std::cout << "enter the index of the desired entry: ";
+    std::cin >> index;
+    std::cout << "first name: " <<  c->first_name << std::endl;
+	std::cout << "last name: " <<  c->last_name << std::endl;
+	std::cout << "nickname: " <<  c->nickname << std::endl;
+	std::cout << "phone number: " <<  c->phone_number << std::endl;
+	std::cout << "darkest secret: " <<  c->darkest_secret << std::endl;
 }
 
 int main(void)
 {
     std::string cmd;
     phonebook ph;
-   // std::cout << ph.contacts[6].first_name << std::endl;
     while (1)
     {
+        std::cout << "> enter command: ";
         std::cin >> cmd;
         if (!std::string("EXIT").compare(cmd))
             exit(0);
         else if (!std::string("ADD").compare(cmd))
             ph.add();
-       else if (!std::string("SEARCH").compare(cmd))
+        else if (!std::string("SEARCH").compare(cmd))
             ph.search();
+        std::cin.ignore(10000,'\n');
     }
     return (0);
 }

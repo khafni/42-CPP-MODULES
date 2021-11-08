@@ -12,7 +12,7 @@ class phonebook
         std::string first_name;
         std::string last_name;
         std::string nickname;
-        int phone_number;
+        std::string phone_number;
         std::string darkest_secret;
             contact(std::string first_name="fewfew", std::string last_name="", std::string nickname="", int phone_number=0, std::string darkest_secret="");
             void contact_set(std::string first_name, std::string last_name, std::string nickname, int phone_number, std::string darkest_secret);
