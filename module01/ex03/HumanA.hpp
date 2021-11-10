@@ -4,10 +4,10 @@
 #include <string>
 
 class HumanA {
-    Weapon      w;
+    Weapon      &w;
     std::string name;
     public:
-        HumanA(std::string name, Weapon w);
+        HumanA(std::string name, Weapon &w);
         void attack(void);
 };
 
