@@ -11,7 +11,7 @@ Fixed::Fixed()
 
 Fixed::~Fixed()
 {
-    std::cout << "fixed point object destroyed" << std::endl;
+    std::cerr << "fixed point object destroyed" << std::endl;
 }
 
 Fixed::Fixed(const Fixed &obj)
@@ -61,9 +61,10 @@ int Fixed::toInt( void ) const
     return (this->fixPointValue >> this->FractBItsNum);
 }
 
-std::ostream& operator<<(std::ostream &obj, Fixed &num)
+std::ostream& operator<<(std::ostream &obj, const Fixed &num)
 {
     obj << num.toFloat();
+    //obj << 42.69f;
     return (obj);
 }
 
@@ -113,7 +114,7 @@ Fixed   Fixed::operator- (const Fixed& F2)
 
 Fixed   Fixed::operator* (const Fixed& F2)
 {  
-    int tmp_f = this->toFloat() * F2.toFloat();
+    float tmp_f = this->toFloat() * F2.toFloat();
     Fixed F(tmp_f);
     return (F);
 }
@@ -149,4 +150,21 @@ Fixed    Fixed::operator--(int)
     Fixed F(*this);
     this->fixPointValue--;
     return (F);
+}
+
+Fixed Fixed::min(const Fixed &f1,const Fixed &f2)
+{
+
+    if (f1.toFloat() <= f2.toFloat())
+        return (f1);
+    return (f2);
+}
+
+
+Fixed Fixed::max(const Fixed &f1, const Fixed &f2)
+{
+
+    if (f1.toFloat() >= f2.toFloat())
+        return (f1);
+    return (f2);
 }
