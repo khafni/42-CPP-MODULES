@@ -7,6 +7,11 @@ ClapTrap::ClapTrap(std::string Name) : Name(Name)
     this->Attack_damage = 0;
 }
 
+ClapTrap::ClapTrap()
+{
+    std::cout << " lol" << std::endl;
+}
+
 ClapTrap::~ClapTrap()
 {
     std::cout << "object distructed" << std::endl;

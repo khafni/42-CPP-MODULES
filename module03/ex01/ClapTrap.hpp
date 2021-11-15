@@ -4,12 +4,15 @@
 # include <iostream>
 class ClapTrap
 {
-    std::string Name;
-    int         Hitpoints;
-    int         Energy_points;
-    int         Attack_damage;
+    // vptr *p
+    protected:
+        std::string Name;
+        int         Hitpoints;
+        int         Energy_points;
+        int         Attack_damage;
     public:
         ClapTrap(std::string name);
+        ClapTrap();
         ~ClapTrap();
         void attack(std::string const & target);
         void takeDamage(unsigned int amount);
