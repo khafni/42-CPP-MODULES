@@ -4,6 +4,6 @@ int main()
 {
     FragTrap FT("bibi");
     FT.attack("bobo");
-    FT.highFivesGuys();
+    //FT.highFivesGuys();
     return (0);
 }

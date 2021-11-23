@@ -3,8 +3,7 @@
 # include <string>
 # include <iostream>
 class ClapTrap
-{
-    // vptr *p
+{ 
     protected:
         std::string Name;
         int         Hitpoints;
@@ -14,9 +13,9 @@ class ClapTrap
         ClapTrap(std::string name);
         ClapTrap();
         ~ClapTrap();
-        virtual void attack(std::string const & target);
-        virtual void takeDamage(unsigned int amount);
-        virtual void beRepaired(unsigned int amount);
+        void attack(std::string const & target);
+        void takeDamage(unsigned int amount);
+        void beRepaired(unsigned int amount);
 };
 
 #endif

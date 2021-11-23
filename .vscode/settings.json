@@ -68,5 +68,6 @@
         "random": "cpp",
         "fstream": "cpp",
         "iomanip": "cpp"
-    }
+    },
+    "workbench.colorCustomizations": {}
 }

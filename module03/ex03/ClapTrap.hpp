@@ -3,8 +3,7 @@
 # include <string>
 # include <iostream>
 class ClapTrap
-{
-    // vptr *p
+{ 
     protected:
         std::string Name;
         int         Hitpoints;

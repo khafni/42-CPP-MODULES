@@ -9,9 +9,9 @@ class ScavTrap : virtual public ClapTrap
         ScavTrap(std::string name);
         ScavTrap();
         ~ScavTrap();
-        virtual void attack(std::string const & target);
+        void attack(std::string const & target);
         void takeDamage(unsigned int amount);
         void beRepaired(unsigned int amount);
-        void guardGate(); 
+        void guardGate();
 };
 #endif

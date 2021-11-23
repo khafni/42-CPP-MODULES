@@ -2,18 +2,22 @@
 # define DIAMONDTRAP_HPP
 # include "FragTrap.hpp" 
 # include "ScavTrap.hpp" 
+#include <iostream>
 
 class DiamondTrap:  public FragTrap, public ScavTrap
 {
     public:
-    // std::string Name;
-    DiamondTrap(std::string name);
+    std::string Name;
+    DiamondTrap(std::string Name);
     ~DiamondTrap();
-
-    virtual void attack(std::string const & target);
-    virtual void takeDamage(unsigned int amount);
-    virtual void beRepaired(unsigned int amount);
-
+    void get_data() const
+    {
+        std::cout << this->Hitpoints << std::endl;
+    }
+    void attack(std::string const & target);
+    void takeDamage(unsigned int amount);
+    void beRepaired(unsigned int amount);
+    void whoAmI();
 };
 
 #endif

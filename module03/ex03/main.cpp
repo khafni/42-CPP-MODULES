@@ -1,9 +1,11 @@
-#include "FragTrap.hpp"
+#include "DiamondTrap.hpp"
+#include <iostream>
 
 int main()
 {
-    FragTrap FT("bibi");
-    FT.attack("bobo");
-    FT.highFivesGuys();
+    DiamondTrap DT("bibi");
+    //DT.get_data();
+    DT.attack("nibba");
+    DT.whoAmI();
     return (0);
 }
