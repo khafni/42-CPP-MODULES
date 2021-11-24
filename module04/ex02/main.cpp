@@ -12,7 +12,6 @@ int main()
     //     an_arr[i] = new Cat; 
     // for (int i = 0; i < 100; i++)
     //     delete an_arr[i];
-
     Dog* j = new Dog();
     j->set_ideas("dude");
     j->get_ideas();
