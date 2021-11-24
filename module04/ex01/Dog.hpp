@@ -13,6 +13,10 @@ class Dog: public Animal
 		Dog();
 		~Dog();
 		Dog(Dog &adog);
+		Dog &operator = (const Dog &d);
+		void set_ideas(std::string ideas);
+		void get_ideas();
+
 		void makeSound() const;
 		std::string getType() const;
 };

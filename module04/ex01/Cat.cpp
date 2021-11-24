@@ -10,12 +10,20 @@ Cat::Cat(Cat &acat)
 {
     this->b = new Brain;
     for (int i = 0; i < 100; i++)
+		this->b->ideas[i] = acat.b->ideas[i]; 
+}
+
+Cat &Cat::operator = (const Cat &acat)
+{
+    this->b = new Brain;
+    for (int i = 0; i < 100; i++)
 		this->b->ideas[i] = acat.b->ideas[i];
+    return (*this);
 }
 
 Cat::~Cat()
 {
-	std::cout << "Animal constructor called" << std::endl;
+	std::cout << "Cat distructor called" << std::endl;
     delete this->b;
 }
 

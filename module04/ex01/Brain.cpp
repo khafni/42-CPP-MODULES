@@ -2,12 +2,12 @@
 #include <string>
 	
 Brain::Brain()
-{
-    for (std::string s : this->ideas) 
-        s = "default string"; 
+{ 
+    for (int i = 0; i < 100; i++) 
+        this->ideas[i] = "default string"; 
 }
 	
 Brain::~Brain()
 {
-	
+
 }

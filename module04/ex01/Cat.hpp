@@ -10,10 +10,10 @@ class Cat: public Animal
 	protected:
 		std::string type;
 	public:
-
 		Cat();
 		~Cat();
 		Cat(Cat &acat);
+		Cat &operator = (const Cat &d); 
 		void makeSound() const;
 		std::string getType() const;
 };

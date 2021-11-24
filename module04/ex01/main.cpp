@@ -5,12 +5,19 @@
 #include <iostream>
 int main()
 {
-    Animal *an_arr[100];
-    for (int i = 0; i < 50; i++)
-        an_arr[i] = new Dog;
-    for (int i = 50; i < 100; i++)
-        an_arr[i] = new Cat; 
-    for (int i = 0; i < 100; i++)
-        delete an_arr[i]; 
+    // Animal *an_arr[100];
+    // for (int i = 0; i < 50; i++)
+    //     an_arr[i] = new Dog;
+    // for (int i = 50; i < 100; i++)
+    //     an_arr[i] = new Cat; 
+    // for (int i = 0; i < 100; i++)
+    //     delete an_arr[i];
+
+    Dog* j = new Dog();
+    //j->set_ideas("dude");
+     j->get_ideas();
+    //const Animal* i = new Cat();
+    delete j;//should not create a leak
+    //delete i;
     return (0);
 }
