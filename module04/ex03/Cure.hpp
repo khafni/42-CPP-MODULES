@@ -1,17 +1,17 @@
-#ifndef ICE_H
-#define ICE_H
+#ifndef CURE_H
+#define CURE_H
 #pragma once
 #include "ICharacter.hpp"
 #include "AMateria.hpp"	
-class Ice  : public AMateria 
 
+class Cure: public AMateria
 {
 	private:
 
 	public:
 
-		Ice();
-		~Ice();
+		Cure();
+		~Cure();
 		AMateria* clone() const;
 		void use(ICharacter& target);
 };
