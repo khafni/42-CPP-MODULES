@@ -1,16 +1,6 @@
 #include "Bureaucrat.hpp"  
 #include <iostream>
 #include <string>
-
-const char *Bureaucrat::GradeTooHighException::what() const throw()
-{
-    return "grade is too high";
-}
-
-const char *Bureaucrat::GradeTooLowException::what() const throw()
-{
-	return "grade is too low";
-}
 	
 Bureaucrat::Bureaucrat(std::string name, int grade)
 {
@@ -89,4 +79,19 @@ std::ostream& operator<< (std::ostream& stream, const Bureaucrat& bc)
 {
     stream << bc.getName() << ", bureaucrat grade " << bc.getGrade();
     return (stream);
+}
+
+void Bureaucrat::signForm(Form &f)
+{
+    try
+    {
+        if (this->getGrade() > f.GetGradeToGetSigned())
+            throw (420);
+        std::cout << this->getName() << " signs " << f.getName() << std::endl;
+    }
+    catch (int &err_num)
+    {
+        std::cout << this->getName() << " cannot sign " << f.getName() << " because " << "grade too low" <<std::endl;
+        exit(1);
+    }
 }

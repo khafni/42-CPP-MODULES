@@ -3,18 +3,27 @@
 #pragma once
 # include <string>
 # include <exception>
+# include "Form.hpp"
+	
+class Form;
 
 class Bureaucrat  
 {
 	public:
 		class GradeTooHighException : public std::exception
 		{
-			virtual const char *what() const throw();
+			virtual const char *what() const throw()
+			{
+				return "grade is too high";
+			}
 		} gthe;
 
 		class GradeTooLowException : public std::exception
 		{
-			virtual const char *what() const throw();
+			virtual const char *what() const throw()
+			{
+				return "grade is too low";
+			}
 		} gtle;
 
 	private:
@@ -27,6 +36,7 @@ class Bureaucrat
 		void grade_increment();
 		void grade_decrement();
 		~Bureaucrat();
+		void signForm(Form &f);
 };
 std::ostream& operator<< (std::ostream& stream, const Bureaucrat& bc);	
 #endif

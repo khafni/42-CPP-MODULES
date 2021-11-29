@@ -19,3 +19,8 @@ AMateria::~AMateria()
 {
 	
 }
+
+void AMateria::use(ICharacter& target)
+{
+
+}

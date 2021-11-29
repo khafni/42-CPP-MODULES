@@ -1,6 +1,6 @@
 #include "Character.hpp"  
 	
-Character::Character(std::string name):len(0)
+Character::Character(std::string name):len(1)
 {
     for (int i = 0; i < 4; i++)
         this->materias[i] = NULL;
@@ -27,6 +27,7 @@ void Character::equip(AMateria* m)
         || !m)
         return ;
     this->materias[this->len - 1] = m;
+    this->len++;
 }
 
 void Character::unequip(int idx)
