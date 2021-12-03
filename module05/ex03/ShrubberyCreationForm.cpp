@@ -38,7 +38,7 @@ void ShrubberyCreationForm::action() const
     myfile << "        *PMMMMMMhn. *x > M  .MMMM**\"\"           " << std::endl;
     myfile << "           \"\"**MMMMhx/.h/ .=*\"                  " << std::endl;
     myfile << "                    .3P\"%....                   " << std::endl;
-    myfile << "                  nP\"     \"*MMnx       pizzaboiiiiiiiiii" << std::endl;
+    myfile << "                  nP\"     \"*MMnx       " << this->target <<  std::endl;
     myfile.close();
 }
 

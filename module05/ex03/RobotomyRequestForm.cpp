@@ -15,6 +15,9 @@ void RobotomyRequestForm::action() const
 {
     std::srand(time(NULL));
     std::cout << "rizzzzzzzzzzzzzz" << std::endl;
+    std::cout << "rizzzzzzzzzzzzzzzzzzzz" << std::endl;
+    std::cout << "rizzzzzzzzz" << std::endl;
+    std::cout << "rizzzzzzzzzzzzzzzz" << std::endl;
     int random_num = rand() % 2;
     if (!random_num)
         std::cout << this->target << "as been robotomized successfully" << std::endl;
