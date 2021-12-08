@@ -2,6 +2,7 @@
 #include "Dog.hpp"
 #include "Cat.hpp"
 #include "WrongCat.hpp"
+#include <_ctype.h>
 #include <iostream>
 int main()
 {
@@ -15,12 +16,18 @@ int main()
 
     Dog* j = new Dog();
     j->set_ideas("dude");
-    j->get_ideas();
+   // j->get_ideas();
     
     Dog k(*j);
     //const Animal* i = new Cat();
     k.get_ideas();
-    delete j;//should not create a leak
+    k.set_ideas("wesh");
+
+
+    k.get_ideas();
+    j->get_ideas();
+
+    //delete j;//should not create a leak
     //delete i;
     return (0);
 }

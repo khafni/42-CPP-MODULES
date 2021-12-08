@@ -48,6 +48,6 @@ void Dog::set_ideas(std::string idea)
 
 void Dog::get_ideas(void)
 {
-	for (int i = 0; i < 100; i++)
+	for (int i = 0; i < 1; i++)
 		std::cout << this->b->ideas[i] << std::endl;
 }
