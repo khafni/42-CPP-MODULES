@@ -1,6 +1,7 @@
 #include <cctype>
 #include <ios>
 #include <iostream>
+#include <limits>
 #include <sstream>
 #include <string>
 #include "literal_parser.hpp"
@@ -44,11 +45,20 @@ int main(int argc, char *argv[])
     
     literal_parser lp(argv[1]);
     lp.display();
+    //int x = 123456789;
+    // if ((std::numeric_limits<float>::max() < x))
+    //     std::cout << "fuck" << std::endl;
+    // else
+    //     std::cout <<std::fixed << static_cast<float>(x) << std::endl;
+    //std::cout << " $$$$ " << static_cast<bool>((std::numeric_limits<char>::max() < 434)) << std::endl;
     //std::cout << std::setprecision(1) << std::fixed << 4.22262626 << std::endl;
     //std::cout << 4.0 << std::endl;
     //std::cout << static_cast<int>(lp.type) << std::endl;
     //std::cout << lp.type << std::endl;
    // std::cout << atof(argv[1]) << std::endl;
     // float d = stof("inff");
+   // float d;
+   // std::stringstream ("nan") >> d;
+    //std::cout << d << std::endl;
     return 0;
 }

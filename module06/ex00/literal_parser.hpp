@@ -7,19 +7,26 @@
 #define DOUBLE_TYPE 4
 # include <string>
 # include <iostream>
+# include <limits>
+# include <math.h>
 	
 class literal_parser  
 {
 	private:
-		
 		char Cvalue;
+		int Ivalue;
 		float Fvalue;
 		double Dvalue;
+		int is_pseudo_literal;
+		int overflows;
 		void get_type(std::string input);
 		void convert(void);
+		void display_char();
+		void display_int();
+		void display_float();
+		void display_double();
 	public:
 		
-		int Ivalue;
 		char type;
 		literal_parser(std::string input);
 		void display();
