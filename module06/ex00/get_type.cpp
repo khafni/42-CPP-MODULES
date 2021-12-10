@@ -40,6 +40,7 @@ bool check_if_float(std::string input)
         return (false);
     return true;
 }
+
 bool check_if_double(std::string input)
 {
     double tmp;
@@ -73,10 +74,11 @@ bool check_if_int(std::string input)
 void literal_parser::get_type(std::string input)
 {
     std::stringstream ss(input);
-    if (input.length() == 1 && std::isprint(input[0] - '0'))
+    if (input.length() == 1 && (std::isprint(input[0] - '0')|| std::isprint(input[0])))
     {
         this->type = CHAR_TYPE;
         ss >> this->Cvalue;
+        std::cout  << "wesh ana hna" << std::endl;
     }
     else if (check_if_int(input))
     {
