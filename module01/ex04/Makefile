@@ -1,4 +1,4 @@
-SCRS = main.cpp 
+SCRS = main.cpp
 
 NAME = Zombie
 cc = clang++

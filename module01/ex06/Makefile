@@ -1,6 +1,6 @@
-SCRS = main.cpp 
+SCRS = main.cpp Karen.cpp
 
-NAME = Zombie
+NAME = main
 cc = clang++
 CFLAGS = -Wall -Werror -Wextra
 

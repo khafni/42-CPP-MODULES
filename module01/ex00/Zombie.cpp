@@ -6,6 +6,10 @@ Zombie::Zombie(std::string name)
 {
     this->name = name;
 }
+Zombie::Zombie()
+{
+    this->name = "";
+}
 
 Zombie::~Zombie()
 {
