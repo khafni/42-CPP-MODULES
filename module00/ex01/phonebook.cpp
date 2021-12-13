@@ -1,60 +1,37 @@
 #include "phonebook.hpp"
 #include <iostream>
+#include <sstream>
 #include <string>
 
-phonebook::phonebook()
+Phonebook::Phonebook()
 {
     this->contacts_size = 0;
 }
 
-phonebook::contact::contact(std::string first_name, std::string last_name, std::string nickname, int phone_number, std::string darkest_secret)
+void Phonebook::add(void)
 {
-    this->first_name = first_name;
-    this->last_name = last_name;
-    this->nickname = nickname;
-    this->phone_number = phone_number;
-    this->darkest_secret = darkest_secret;
-}
-
-void phonebook::contact::contact_set(std::string first_name, std::string last_name, std::string nickname, int phone_number, std::string darkest_secret)
-{
-    this->first_name = first_name;
-    this->last_name = last_name;
-    this->nickname = nickname;
-    this->phone_number = phone_number;
-    this->darkest_secret = darkest_secret;
-}
-
-void phonebook::add(void)
-{
-    phonebook::contact *c;
-
+    Contact *c;
 
     this->contacts_size++;
     if (this->contacts_size > 8)
     {
-        c = &this->contacts[7];
+        c = &this->contacts[0];
         this->contacts_size = 7;
     }
     else
         c = &this->contacts[this->contacts_size - 1];
-    std::cout << "insert first name: ";
-    std::cin >> c->first_name;
-    std::cout << std::endl;
-    std::cout << "insert last name: ";
-    std::cin >> c->last_name;
-    std::cout << std::endl;
-    std::cout << "insert nickname: ";
-    std::cin >> c->nickname;
-    std::cout << std::endl;
-    std::cout << "insert phone number: ";
-    std::cin >> c->phone_number;
-    std::cout << std::endl;
-    std::cout << "insert darkest secret: ";
-    std::cin >> c->darkest_secret;
-    std::cout << std::endl;
+    c->contact_set_using_cin();
 }
 
+bool Phonebook::is_number(std::string str)
+{
+    for (int i = 0; i < (int)str.length(); i++)
+    {
+        if ((str[i] < '0' || str[i] > '9'))
+            return (false);
+    }
+    return (true);
+}
 std::string str_truncate(std::string str)
 {
     std::string r_s = str.substr(0, 10);
@@ -63,10 +40,10 @@ std::string str_truncate(std::string str)
     return (r_s);
 }
 
-void phonebook::search(void)
+void Phonebook::search(void)
 {
-    phonebook::contact *c;
-    unsigned index;
+    Contact *c;
+    std::string index_;
    
     c = &this->contacts[this->contacts_size - 1];
     std::cout << "|" << std::setw(10) << std::left << "index" << "|";
@@ -81,36 +58,43 @@ void phonebook::search(void)
     {
         c = &this->contacts[i];
         std::cout << "|" << std::setw(10) << std::left << i << "|";
-        std::cout << std::setw(10) <<  str_truncate(c->first_name) << "|";
-	    std::cout << std::setw(10) <<  str_truncate(c->last_name) << "|";
-	    std::cout << std::setw(10) <<  str_truncate(c->nickname) << "|";
-	    std::cout << std::setw(10) <<  str_truncate(c->phone_number) << "|";
-	    std::cout << std::setw(10) <<  str_truncate(c->darkest_secret) << "|" << std::endl;
+        c->contact_formated_display(); 
     }
     std::cout << "enter the index of the desired entry: ";
-    std::cin >> index;
-    std::cout << "first name: " <<  c->first_name << std::endl;
-	std::cout << "last name: " <<  c->last_name << std::endl;
-	std::cout << "nickname: " <<  c->nickname << std::endl;
-	std::cout << "phone number: " <<  c->phone_number << std::endl;
-	std::cout << "darkest secret: " <<  c->darkest_secret << std::endl;
+    std::getline(std::cin, index_);
+    //std::cin >> index_;
+    int index = -1;
+    std::stringstream(index_) >> index;
+    if (std::cin.fail() || !is_number(index_))
+    {
+        std::cout << "Please enter an integer" << std::endl;
+        std::cin.clear();
+        return ;
+    }
+    if (index > static_cast<int>(this->contacts_size - 1) || index < 0)
+    {
+        std::cout << "wrong index" << std::endl;
+        std::cin.clear();
+        return ;
+    }
+    c->contact_display();
 }
 
 int main(void)
 {
     std::string cmd;
-    phonebook ph;
+    Phonebook ph;
     while (1)
     {
         std::cout << "> enter command: ";
-        std::cin >> cmd;
+        std::getline(std::cin, cmd);
         if (!std::string("EXIT").compare(cmd))
             exit(0);
         else if (!std::string("ADD").compare(cmd))
             ph.add();
         else if (!std::string("SEARCH").compare(cmd))
             ph.search();
-        std::cin.ignore(10000,'\n');
+      // std::cin.ignore(10000,'\n');
     }
     return (0);
 }

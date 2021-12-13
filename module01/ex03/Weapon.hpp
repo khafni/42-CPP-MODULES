@@ -4,7 +4,8 @@
 # include <string>
 
 class Weapon {
-    std::string type;
+    private:
+        std::string type;
     public:
         const std::string &getType(void);
         void    setType(std::string newType);

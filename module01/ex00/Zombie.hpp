@@ -5,7 +5,8 @@
 
 
 class Zombie {
-    std::string name;
+    private:
+        std::string name;
     public:
         void anounce(void);
         Zombie(std::string name="unkow");

@@ -1,4 +1,4 @@
-SCRS = phonebook.cpp
+SCRS = phonebook.cpp Contact.cpp
 
 NAME = phonebook
 cc = clang++
