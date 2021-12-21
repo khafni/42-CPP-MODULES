@@ -10,6 +10,8 @@ class A: public Base
 	public:
 
 		A();
+		A(const A& obj);
+		A &operator=(const A& obj);
 		~A();
 
 };

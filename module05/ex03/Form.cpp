@@ -16,7 +16,7 @@ const char *Form::FormNotSignedException::what() const throw()
 	return "form is not signed";
 }
 
-Form::Form(const std::string name, int grade_to_get_signed, int grade_to_get_executed): name(name), grade_to_get_executed(grade_to_get_executed), grade_to_get_signed(grade_to_get_signed)
+Form::Form(const std::string name, int grade_to_get_signed, int grade_to_get_executed): name(name), grade_to_get_signed(grade_to_get_signed), grade_to_get_executed(grade_to_get_executed)
 {
     this->is_signed = false;
     try
@@ -36,7 +36,16 @@ Form::Form(const std::string name, int grade_to_get_signed, int grade_to_get_exe
         exit(1);
     }
 }
-	
+Form::Form(const Form &obj): name(obj.name),  grade_to_get_signed(obj.grade_to_get_signed), grade_to_get_executed(obj.grade_to_get_executed)
+{
+
+}
+
+Form &Form::operator= (const Form &obj)
+{
+    (void)obj;
+    return (*this);
+}
 Form::~Form()
 {
 	
@@ -51,11 +60,11 @@ bool Form::get_is_signed() const
     return (this->is_signed);
 }
 
-const int Form::GetGradeToGetSigned() const
+int Form::GetGradeToGetSigned() const
 {
     return (grade_to_get_signed);
 }
-const int Form::GetGradeToGetExecuted() const
+int Form::GetGradeToGetExecuted() const
 {
     return (grade_to_get_executed);
 }

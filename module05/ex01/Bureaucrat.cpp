@@ -21,7 +21,26 @@ Bureaucrat::Bureaucrat(std::string name, int grade)
     }
 
 }
-	
+
+Bureaucrat::Bureaucrat()
+{
+    this->name = "";
+    this->grade = 0;
+}
+
+Bureaucrat::Bureaucrat(const Bureaucrat &obj)
+{
+    this->name = obj.name;
+    this->grade = obj.grade;
+}
+
+Bureaucrat& Bureaucrat::operator=(const Bureaucrat &obj)
+{
+    this->name = obj.name;
+    this->grade = obj.grade;
+    return (*this);
+}
+
 Bureaucrat::~Bureaucrat()
 {
 	

@@ -10,6 +10,8 @@ class B : public Base
 
 		B();
 		~B();
+		B(const B& obj);
+		B &operator=(const B& obj);
 
 };
 #endif

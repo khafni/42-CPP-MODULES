@@ -5,7 +5,22 @@ ShrubberyCreationForm::ShrubberyCreationForm(std::string target): Form("Shrubber
 {
     this->target = target;
 }
-	
+ShrubberyCreationForm::ShrubberyCreationForm(const ShrubberyCreationForm &obj): Form(obj.target, 25, 5)
+{
+    this->target = obj.target;
+}
+
+ShrubberyCreationForm::ShrubberyCreationForm(): Form("ShrubberyCreationForm", 145, 137)
+{
+    this->target = "";
+}
+
+
+ShrubberyCreationForm &ShrubberyCreationForm::operator= (const ShrubberyCreationForm &obj)
+{
+    this->target = obj.target;
+    return (*this);
+}
 ShrubberyCreationForm::~ShrubberyCreationForm()
 {
 	

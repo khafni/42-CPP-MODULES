@@ -9,6 +9,26 @@ Intern::Intern()
     this->forms_makers_names[1] = "robotomy request";
     this->forms_makers_names[2] = "shrubbery creation";
 }
+Intern::Intern(const Intern &obj)
+{
+    this->forms_makers[0] =  obj.forms_makers[0];
+    this->forms_makers[1] = obj.forms_makers[1];
+    this->forms_makers[2] = obj.forms_makers[2];
+    this->forms_makers_names[0] = obj.forms_makers_names[0];
+    this->forms_makers_names[1] = obj.forms_makers_names[1];
+    this->forms_makers_names[2] = obj.forms_makers_names[2];
+}
+
+Intern &Intern::operator= (const Intern &obj)
+{
+    this->forms_makers[0] =  obj.forms_makers[0];
+    this->forms_makers[1] = obj.forms_makers[1];
+    this->forms_makers[2] = obj.forms_makers[2];
+    this->forms_makers_names[0] = obj.forms_makers_names[0];
+    this->forms_makers_names[1] = obj.forms_makers_names[1];
+    this->forms_makers_names[2] = obj.forms_makers_names[2];
+    return (*this);
+}
 
 Form *Intern::makePresidentialPardonForm( std::string target)
 {

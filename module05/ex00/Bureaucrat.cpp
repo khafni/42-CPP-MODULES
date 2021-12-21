@@ -31,7 +31,26 @@ Bureaucrat::Bureaucrat(std::string name, int grade)
     }
 
 }
-	
+Bureaucrat::Bureaucrat()
+{
+    this->name = "";
+    this->grade = 0;
+}
+
+Bureaucrat::Bureaucrat(const Bureaucrat &obj)
+{
+    this->name = obj.name;
+    this->grade = obj.grade;
+}
+
+Bureaucrat& Bureaucrat::operator=(const Bureaucrat &obj)
+{
+    this->name = obj.name;
+    this->grade = obj.grade;
+    return (*this);
+}
+
+
 Bureaucrat::~Bureaucrat()
 {
 	
@@ -52,11 +71,11 @@ void Bureaucrat::grade_increment()
 {
     try
     {
-        this->grade++;
-        if (this->grade > 150)
+        this->grade--;
+        if (this->grade < 1)
         {
-           this->grade--;
-           throw this->gtle;
+           //this->grade--;
+           throw this->gthe;
         }
 
 
@@ -72,11 +91,11 @@ void Bureaucrat::grade_decrement()
 {
     try
     {
-        this->grade--;
+        this->grade++;
         if (this->grade < 1)
         {
-           this->grade++;
-           throw this->gthe;
+           //this->grade++;
+           throw this->gtle;
         }
     }
     catch (std::exception & e)

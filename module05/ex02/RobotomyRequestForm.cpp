@@ -1,11 +1,28 @@
 #include "RobotomyRequestForm.hpp"  
 #include <cstdlib>
+#include <exception>
 	
 RobotomyRequestForm::RobotomyRequestForm(std::string target): Form("RobotomyRequestForm", 145, 137)
 {
     this->target = target;
 }
-	
+
+RobotomyRequestForm::RobotomyRequestForm(): Form("RobotomyRequestForm", 145, 137)
+{
+    this->target = "";
+}
+
+RobotomyRequestForm::RobotomyRequestForm(const RobotomyRequestForm &obj): Form(obj.target, 25, 5)
+{
+    this->target = obj.target;
+}
+
+RobotomyRequestForm &RobotomyRequestForm::operator= (const RobotomyRequestForm &obj)
+{
+    this->target = obj.target;
+    return (*this);
+}
+
 RobotomyRequestForm::~RobotomyRequestForm()
 {
 	
@@ -27,9 +44,9 @@ void RobotomyRequestForm::execute(Bureaucrat const & executor) const
     try
     {
         if (!this->get_is_signed())
-            throw Form::fnse;
+            throw std::exception();
         if (executor.getGrade() > this->GetGradeToGetExecuted())
-            throw Form::gtle;
+            throw std::exception();
         this->action();
     }
     catch (std::exception &e)

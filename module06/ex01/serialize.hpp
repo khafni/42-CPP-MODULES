@@ -10,6 +10,9 @@ class weapon
 
     public:
         weapon(std::string name, std::string type, int power_level);
+        weapon();
+        weapon(const weapon &obj);
+        weapon &operator= (const weapon &obj);
         void weapon_display();
 };
 

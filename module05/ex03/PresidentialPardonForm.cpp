@@ -5,7 +5,21 @@ PresidentialPardonForm::PresidentialPardonForm(std::string target): Form("Presid
 {
 	this->target = target;
 }
-	
+PresidentialPardonForm::PresidentialPardonForm(const PresidentialPardonForm &obj): Form(obj.target, 25, 5)
+{
+    this->target = obj.target;
+}
+
+PresidentialPardonForm::PresidentialPardonForm(): Form("PresidentialPardonForm", 25, 5)
+{
+	this->target = "";
+}
+
+PresidentialPardonForm &PresidentialPardonForm::operator= (const PresidentialPardonForm &obj)
+{
+    this->target = obj.target;
+    return (*this);
+}
 PresidentialPardonForm::~PresidentialPardonForm()
 {
 	

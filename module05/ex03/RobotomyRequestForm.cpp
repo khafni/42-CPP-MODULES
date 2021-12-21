@@ -5,12 +5,24 @@ RobotomyRequestForm::RobotomyRequestForm(std::string target): Form("RobotomyRequ
 {
     this->target = target;
 }
-	
+RobotomyRequestForm::RobotomyRequestForm(): Form("RobotomyRequestForm", 145, 137)
+{
+    this->target = "";
+}
 RobotomyRequestForm::~RobotomyRequestForm()
 {
 	
 }
+RobotomyRequestForm::RobotomyRequestForm(const RobotomyRequestForm &obj): Form(obj.target, 25, 5)
+{
+    this->target = obj.target;
+}
 
+RobotomyRequestForm &RobotomyRequestForm::operator= (const RobotomyRequestForm &obj)
+{
+    this->target = obj.target;
+    return (*this);
+}
 void RobotomyRequestForm::action() const
 {
     std::srand(time(NULL));

@@ -7,9 +7,9 @@
 
 bool is_number(std::string str)
 {
-    int pls = 0;
-    int mns = 0;
-    for (int i = 0; i < str.length(); i++)
+    //int pls = 0;
+    //int mns = 0;
+    for (int i = 0; i < (int)str.length(); i++)
     {
         if ((str[i] < '0' || str[i] > '9') && str[0] != '+'
         && str[0] != '-')

@@ -15,6 +15,8 @@ class Intern
 		Form *makeShrubberyCreationForm(std::string target);
 	public:
 		Intern();
+		Intern(const Intern &obj);
+		Intern &operator= (const Intern &obj);
 		~Intern();
 		Form *makeForm(std::string form_name, std::string target);
 };

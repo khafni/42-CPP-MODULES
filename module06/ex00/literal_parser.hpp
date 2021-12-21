@@ -25,10 +25,12 @@ class literal_parser
 		void display_int();
 		void display_float();
 		void display_double();
-	public:
-		
 		char type;
+	public:	
 		literal_parser(std::string input);
+		literal_parser(const literal_parser & obj);
+		literal_parser &operator= (const literal_parser & obj);
+		literal_parser();
 		void display();
 		~literal_parser();
 };

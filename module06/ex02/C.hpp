@@ -11,6 +11,8 @@ class C  : public Base
 
 		C();
 		~C();
+		C(const C& obj);
+		C &operator=(const C& obj);
 
 };
 #endif

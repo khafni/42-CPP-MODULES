@@ -8,6 +8,28 @@ weapon::weapon(std::string name, std::string type, int power_level)
     this->power_level = power_level;
 }
 
+weapon::weapon()
+{
+    this->name = "";
+    this->type = "";
+    this->power_level = 0;
+}
+
+weapon::weapon(const weapon &obj)
+{
+    this->name = obj.name;
+    this->type = obj.type;
+    this->power_level = obj.power_level;
+}
+
+weapon& weapon::operator=(const weapon &obj)
+{
+    this->name = obj.name;
+    this->type = obj.type;
+    this->power_level = obj.power_level;
+    return (*this);
+}
+
 void weapon::weapon_display()
 {
     std::cout << "name: " << name << std::endl;

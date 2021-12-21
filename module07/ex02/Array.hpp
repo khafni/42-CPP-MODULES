@@ -56,7 +56,9 @@ class Array
         T &operator[](int index)
         {
             if (index < 0 || index >= len)
+            {
                 throw (MyException());
+            }
             return (this->arr[index]);
         }
 };

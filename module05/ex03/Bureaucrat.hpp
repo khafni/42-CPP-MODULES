@@ -31,6 +31,9 @@ class Bureaucrat
 		unsigned 	grade;
 	public:
 		Bureaucrat(const std::string name, int grade);
+		Bureaucrat(const Bureaucrat &obj);
+		Bureaucrat();
+		Bureaucrat& operator=(const Bureaucrat &obj);
 		const std::string getName() const;
 		int getGrade() const;
 		void grade_increment();

@@ -46,6 +46,7 @@ void identify(Base& p)
 	{
 		A &a = dynamic_cast<A&>(p);
 		std::cout << "A" << std::endl;
+		(void)a;
 		// B &b = dynamic_cast<B&>(p);
 		// std::cout << "B" << std::endl;	
 		// C &c = dynamic_cast<C&>(p);
@@ -58,7 +59,8 @@ void identify(Base& p)
 			// A &a = dynamic_cast<A&>(p);
 			// std::cout << "A" << std::endl;
 			B &b = dynamic_cast<B&>(p);
-			std::cout << "B" << std::endl;	
+			std::cout << "B" << std::endl;
+			(void)b;
 			// C &c = dynamic_cast<C&>(p);
 			// std::cout << "C" << std::endl;	
 		}
@@ -72,7 +74,7 @@ void identify(Base& p)
 int main()
 {
 	Base *bp = generate();
-	Base *bp2 = new C;
+	//Base *bp2 = new C;
 	// identify(generate());
 	identify(*bp);
 	//identify(*bp2);
