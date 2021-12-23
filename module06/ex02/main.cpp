@@ -74,9 +74,14 @@ void identify(Base& p)
 int main()
 {
 	Base *bp = generate();
-	//Base *bp2 = new C;
+	Base *bp2 = new A;
+	Base *bp3 = new B;
+	Base *bp4 = new C;
 	// identify(generate());
 	identify(*bp);
+	identify(*bp2);
+	identify(*bp3);
+	identify(*bp4);
 	//identify(*bp2);
 	return (0);
 }

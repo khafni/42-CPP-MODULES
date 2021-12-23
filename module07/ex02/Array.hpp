@@ -27,6 +27,7 @@ class Array
         {
             return (len);
         }
+        
         ~Array()
         {
             if (this->arr)
@@ -36,7 +37,7 @@ class Array
         {
             this->len = anArray.len;
             this->arr = new T[anArray.len];
-            for (int i = 0; i <this->len; i++)
+            for (int i = 0; i < (int)this->len; i++)
             {
                 this->arr[i] = anArray.arr[i];
             }
@@ -55,7 +56,7 @@ class Array
 
         T &operator[](int index)
         {
-            if (index < 0 || index >= len)
+            if (index < 0 || index >= (int)len)
             {
                 throw (MyException());
             }

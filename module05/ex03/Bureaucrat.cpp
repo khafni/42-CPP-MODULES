@@ -4,9 +4,8 @@
 #include <iostream>
 #include <string>
 	
-Bureaucrat::Bureaucrat(std::string name, int grade)
+Bureaucrat::Bureaucrat(std::string name, int grade): name(name)
 {
-    this->name = name;
     try
     {
         if (grade < 1)
@@ -23,21 +22,18 @@ Bureaucrat::Bureaucrat(std::string name, int grade)
     }
 
 }
-Bureaucrat::Bureaucrat()
+Bureaucrat::Bureaucrat():name("")
 {
-    this->name = "";
     this->grade = 0;
 }
 
-Bureaucrat::Bureaucrat(const Bureaucrat &obj)
+Bureaucrat::Bureaucrat(const Bureaucrat &obj): name(obj.name)
 {
-    this->name = obj.name;
     this->grade = obj.grade;
 }
 
 Bureaucrat& Bureaucrat::operator=(const Bureaucrat &obj)
 {
-    this->name = obj.name;
     this->grade = obj.grade;
     return (*this);
 }	
@@ -57,7 +53,7 @@ int Bureaucrat::getGrade() const
     return (this->grade);
 }
 
-void Bureaucrat::grade_increment()
+void Bureaucrat::grade_decrement()
 {
     try
     {
@@ -77,7 +73,7 @@ void Bureaucrat::grade_increment()
     }
 }
 
-void Bureaucrat::grade_decrement()
+void Bureaucrat::grade_increment()
 {
     try
     {
@@ -91,6 +87,7 @@ void Bureaucrat::grade_decrement()
     catch (std::exception & e)
     {
         std::cout << e.what() << std::endl;
+        exit(1);
     }
 }
 

@@ -10,12 +10,8 @@
 
 class addingNumberException: public std::exception
 {
-	const char * what() const throw()
-	{
-		return ("numbers vector is full");
-	}
+	const char * what() const throw();	
 };
-
 
 class Span  
 {
@@ -25,8 +21,10 @@ class Span
 	public:
 		Span(int N);
 		~Span();
+
 		void addNumber(int num);
 		void addRandomNNumber();
+		void addNumbers(std::vector<int>::iterator begin, std::vector<int>::iterator end);
 		int shortestSpan();
 		int longestSpan();
 };

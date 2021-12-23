@@ -6,12 +6,12 @@
 
 int main()
 {
-    Bureaucrat b("le dude", 420);
-    PresidentialPardonForm Pf("dude");
+    Bureaucrat b("le dude", 3);
+    //PresidentialPardonForm Pf("dude");
     RobotomyRequestForm RR("kik");
-    b.signForm(Pf);
-    b.executeForm(Pf);
-   // RR.action();
-    //Pf.action();
+   // b.signForm(Pf);
+    b.signForm(RR);
+   b.executeForm(RR);
+   // Pf.action();
     return (0);
 }

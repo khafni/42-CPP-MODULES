@@ -44,9 +44,9 @@ void RobotomyRequestForm::execute(Bureaucrat const & executor) const
     try
     {
         if (!this->get_is_signed())
-            throw std::exception();
+           throw Form::fnse;
         if (executor.getGrade() > this->GetGradeToGetExecuted())
-            throw std::exception();
+            throw Form::gtle;
         this->action();
     }
     catch (std::exception &e)

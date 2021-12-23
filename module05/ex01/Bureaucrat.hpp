@@ -26,7 +26,7 @@ class Bureaucrat
 		} gtle;
 
 	private:
-		std::string name;
+		const std::string name;
 		unsigned 	grade;
 	public:
 		Bureaucrat();

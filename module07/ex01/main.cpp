@@ -10,7 +10,7 @@ void fun2(std::string &num)
     num += '@';
 }
 
-int main(int argc, char **argv)
+int main()
 {
     //first test
     int arr[3] = {1, 1, 1};
